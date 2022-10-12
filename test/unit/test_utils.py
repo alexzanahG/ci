@@ -3,12 +3,16 @@ import os
 import unittest
 import shutil
 import random
+import utils
 src_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '../..'))
 sys.path.append(src_path)
-import utils  # nopep8
 
 
 class TestUtils(unittest.TestCase):
+    def test_find_mean(self):
+        A = [1, 3, 5, 7, 8, 9]
+        mean = utils.find_mean(A)
+        self.assertEqual(mean)
 
     def test_linear_search(self):
         L = random.sample(range(10, 30), 10)
@@ -19,7 +23,5 @@ class TestUtils(unittest.TestCase):
     def test_bindary_search(self):
         L = random.sample(range(10, 30), 10)
         L.append(100)
-
         L_idx = utils.index_list(L)
-
         self.assertTrue(utils.binary_search(L_idx, 100) >= 0)
